@@ -28,9 +28,35 @@ namespace NFLRanking {
             }
 
             foreach (Team team in teamManager.GetTeams()) {
-                LogMsg("Team Manager has {0}", team);
+                LogMsg("{0} is graded a {1}", team, team.Grade);
             }
+
+            Team giants = teamManager.GetTeam("NY Giants");
+            ShowTeamGames(giants);
+
         }
 
+        private static void ShowTeamGames(Team team) {
+            LogMsg("Games for {0}", team.Name);
+            int cumGrade = 0;
+            int delta;
+            foreach (Game game in team.GetGames()) {
+                if (game.IsTie) {
+                    LogMsg("{0} tied {1}",
+                           team.Name, (team == game.Winner) ? game.Loser.Name : game.Winner.Name);
+                }
+                else if (team == game.Winner) {
+                    delta = game.Loser.Wins;
+                    cumGrade += delta;
+                    Console.WriteLine("{0} beat {1} {2} {3}\tCredit:{4} Total:{5}", team.Name, game.Loser.Record, game.Loser, game.Score, delta, cumGrade);
+                }
+                else if (team == game.Loser) {
+                    delta = -1 * game.Winner.Losses;
+                    cumGrade += delta;
+                    Console.WriteLine("{0} lost to {1} {2} {3}\tCredit:{4} Total:{5}", team.Name, game.Winner.Record, game.Winner, game.Score, delta, cumGrade);
+                }
+            }
+            LogMsg("\n{0} final grade is {1}", team.Name, team.Grade);
+        }
     }
 }

@@ -8,14 +8,15 @@ namespace ScoreParser {
         public Team Winner { get; private set; }
         public Team Loser { get; private set; }
         public bool IsTie { get; private set; }
+        public string Score { get; private set; }
 
         public Game(ITeamManager teamManager) {
             _teamManager = teamManager;
         }
 
         public override string ToString() {
-            return string.Format("Game:[{0}]; Winner:{1} Loser:{2} {3}",
-                                 GameDescription, Winner, Loser, IsTie ? "A Tie!" : "");
+            return string.Format("{0} over {1} {2} {3}",
+                                 Winner, Loser, Score, IsTie ? "A Tie!" : "");
         }
 
         public void InitFromGameDescription(string gameDescription) {
@@ -35,7 +36,10 @@ namespace ScoreParser {
                 Loser = _teamManager.GetTeam(teamAndScore2.Item1);
             }
 
-            IsTie = teamAndScore1.Item2 == teamAndScore2.Item2;
+            int score1 = teamAndScore1.Item2;
+            int score2 = teamAndScore2.Item2;
+            Score = score1 > score2 ? string.Format("{0}-{1}", score1, score2) : string.Format("{0}-{1}", score2, score1);
+            IsTie = score1 == score2;
 
             if (IsTie) {
                 Winner.AddTie();
@@ -45,6 +49,8 @@ namespace ScoreParser {
                 Winner.AddWin();
                 Loser.AddLoss();
             }
+            Winner.AddGame(this);
+            Loser.AddGame(this);
         }
 
         private Tuple<string, int> GetTeamAndScore(string teamAndScore) {
