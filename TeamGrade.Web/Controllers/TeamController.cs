@@ -20,6 +20,7 @@ namespace TeamGrade.Web.Controllers
 
         public ActionResult Index() {
             IEnumerable<Team> teams = _teamManager.GetTeams();
+            ViewBag.Title = "2012 NFL Regular Season Grades";
             return View(teams);
         }
 
