@@ -9,8 +9,8 @@ namespace ScoreParser.Tests {
         public void CanGetStats() {
             ITeamManager teamManager = new TeamManager();
             IGameManager gameManager = new GameManager(teamManager);
+            IResultsParser parser = new ResultsParser(gameManager);
 
-            ResultsParser parser = new ResultsParser(gameManager);
             parser.ParseGameResults(NFL2012);
 
             foreach (Team team in teamManager.GetTeams()) {

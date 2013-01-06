@@ -9,7 +9,7 @@ namespace NFLRanking {
         static void Main() {
             ITeamManager teamManager = new TeamManager();
             IGameManager gameManager = new GameManager(teamManager);
-            ResultsParser parser = new ResultsParser(gameManager);
+            IResultsParser parser = new ResultsParser(gameManager);
 
             parser.ParseGameResults(NFL2012);
             Console.WriteLine();

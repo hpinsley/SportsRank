@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreParser", "ScoreParser\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreParser.Tests", "ScoreParser.Tests\ScoreParser.Tests.csproj", "{ED05C860-FB95-4B0F-B894-F93FE06D2ABF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamGrade.Web", "TeamGrade.Web\TeamGrade.Web.csproj", "{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{ED05C860-FB95-4B0F-B894-F93FE06D2ABF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{ED05C860-FB95-4B0F-B894-F93FE06D2ABF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ED05C860-FB95-4B0F-B894-F93FE06D2ABF}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0E1D1247-E066-48C9-9DCC-9E5AB7A4D3ED}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 
 namespace ScoreParser {
-    public class ResultsParser {
+    public class ResultsParser : IResultsParser {
         private IGameManager _gameManager;
 
         public ResultsParser(IGameManager gameManager) {
