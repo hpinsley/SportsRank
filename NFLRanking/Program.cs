@@ -18,6 +18,10 @@ namespace NFLRanking {
             AnalyzeTeam(teamManager.GetTeam("NY Giants"));
             Console.WriteLine();
             AnalyzeTeam(teamManager.GetTeam("Washington"));
+            Console.WriteLine();
+            AnalyzeTeam(teamManager.GetTeam("Dallas"));
+            Console.WriteLine();
+            AnalyzeTeam(teamManager.GetTeam("Philadelphia"));
         }
 
         private static void ListTeams(ITeamManager teamManager) {
