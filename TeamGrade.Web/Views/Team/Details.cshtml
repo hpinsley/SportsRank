@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ScoreParser.TeamGameAnalysis>
+
+@{
+    ViewBag.Title = "Analsysis of " + ViewBag.Team.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Team/Details.css" rel="stylesheet" type="text/css" />
+<h2>Analysis of @ViewBag.Team.Name</h2>
+
+<table>
+    <tr>
+        <th>
+            Team
+        </th>
+        <th>
+            Result            
+        </th>
+        <th>
+            Opponent
+        </th>
+        <th>
+            Score
+        </th>
+        <th>
+            Game<br/>Grade
+        </th>
+        <th>
+            Cumulative
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @ViewBag.Team.Name
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipToOtherTeam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherTeam.Record)
+            @Html.DisplayFor(modelItem => item.OtherTeam.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game.Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameGrade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CumulativeGrade)
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Back", "Index")
+</p>
