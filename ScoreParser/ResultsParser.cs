@@ -1,32 +1,23 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace ScoreParser {
     public class ResultsParser {
+        private IGameManager _gameManager;
 
-        private ITeamManager _teamManager;
-
-        public ResultsParser(ITeamManager teamManager) {
-            _teamManager = teamManager;
+        public ResultsParser(IGameManager gameManager) {
+            _gameManager = gameManager;
         }
 
-        public Games ParseGameResults(string gameResultsFile) {
+        public void ParseGameResults(string gameResultsFile) {
             string[] lines = File.ReadAllLines(gameResultsFile);
-
-            Games games = new Games(_teamManager);
-            games.AddMultiple(lines);
-
-            GradeTheTeams(games);
-            return games;
+            _gameManager.AddMultiple(lines);
+            GradeTheTeams();
         }
 
-        private void GradeTheTeams(Games games) {
-            foreach (Game game in games.GetGames()) {
-                if (game.IsTie)
-                    continue;
-
-                game.Winner.IncrementGrade(game.Loser.Wins);
-                game.Loser.IncrementGrade(-1 * game.Winner.Losses);
+        private void GradeTheTeams() {
+            foreach (Game game in _gameManager.GetGames()) {
+                game.Winner.IncrementGrade(Grader.GradeTeamInGame(game.Winner, game));
+                game.Loser.IncrementGrade(Grader.GradeTeamInGame(game.Loser, game));
             }
         }
     }

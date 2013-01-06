@@ -8,20 +8,18 @@ namespace ScoreParser.Tests {
         [Test]
         public void CanGetStats() {
             ITeamManager teamManager = new TeamManager();
-            ResultsParser parser = new ResultsParser(teamManager);
-            Games games = parser.ParseGameResults(NFL2012);
-            Assert.IsNotNull(games);
-            Assert.AreEqual(256, games.Count);
+            IGameManager gameManager = new GameManager(teamManager);
 
-            foreach (Game game in games.GetGames()) {
-                LogMsg(game.ToString());
-            }
+            ResultsParser parser = new ResultsParser(gameManager);
+            parser.ParseGameResults(NFL2012);
 
             foreach (Team team in teamManager.GetTeams()) {
                 LogMsg("Team Manager has {0}", team);
             }
 
             Assert.AreEqual(32, teamManager.TeamCount);
+            Team giants = teamManager.GetTeam("NY Giants");
+            Assert.AreEqual(21, giants.Grade);
         }
     }
 }
