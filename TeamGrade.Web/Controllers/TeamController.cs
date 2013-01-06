@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ScoreParser;
 
 namespace TeamGrade.Web.Controllers
 {
     public class TeamController : Controller
     {
+        private readonly ITeamManager _teamManager;
+
+        public TeamController(ITeamManager teamManager) {
+            _teamManager = teamManager;
+        }
+
         //
         // GET: /Team/
 
-        public ActionResult Index()
-        {
-            return View();
+        public ActionResult Index() {
+            IEnumerable<Team> teams = _teamManager.GetTeams();
+            return View(teams);
         }
 
         //
