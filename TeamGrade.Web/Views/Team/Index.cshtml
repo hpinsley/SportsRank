@@ -3,9 +3,9 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<hgroup class="title">
-    <h2>@ViewBag.Title</h2>
-</hgroup>
+<h2>@ViewBag.Title</h2>
+
+<link href="~/Content/Team/Index.css" rel="stylesheet" type="text/css" />
 
 <table>
     <tr>
@@ -18,22 +18,18 @@
         <th>
             @Html.DisplayNameFor(model => model.Grade)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "Details", new { teamName=item.Name })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Record)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Grade)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { teamName=item.Name })
         </td>
     </tr>
 }

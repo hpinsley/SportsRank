@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\NFL-2012-Results.txt" />
+    <Content Include="Content\Team\Index.css" />
     <Content Include="Content\Team\Details.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

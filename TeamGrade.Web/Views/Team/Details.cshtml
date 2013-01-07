@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Content/Team/Details.css" rel="stylesheet" type="text/css" />
-<h2>Analysis of @ViewBag.Team.Name</h2>
+<h2>Analysis of @ViewBag.Team.Name (@ViewBag.Team.Grade)</h2>
 
 <table>
     <tr>
@@ -55,6 +55,6 @@
 
 </table>
 
-<p>
+<p class="bottomLinks">
     @Html.ActionLink("Back", "Index")
 </p>
