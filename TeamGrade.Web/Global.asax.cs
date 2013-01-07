@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -46,8 +47,10 @@ namespace TeamGrade.Web {
             Bootstrapper.Initialise();
 
             IResultsParser parser = DependencyResolver.Current.GetService<IResultsParser>();
+            string appData = Server.MapPath("~/App_Data");
             string dataFile = ConfigurationManager.AppSettings["NFL2012ResultsFile"];
-            parser.ParseGameResults(dataFile);
+            string fullPath = Path.Combine(appData, dataFile);
+            parser.ParseGameResults(fullPath);
         }
     }
 }
